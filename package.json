@@ -1,0 +1,22 @@
+{
+  "name": "senior-design-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UCF-Senior-Design-Lost-and-Found/backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UCF-Senior-Design-Lost-and-Found/backend/issues"
+  },
+  "homepage": "https://github.com/UCF-Senior-Design-Lost-and-Found/backend#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
