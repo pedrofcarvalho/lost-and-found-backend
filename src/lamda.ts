@@ -1,10 +1,10 @@
-import awsLambdaFastify from '@fastify/aws-lambda';
-import { FastifyInstance, FastifyServerOptions } from 'fastify';
-import buildApp from './app.js';
+import awsLambdaFastify from "@fastify/aws-lambda";
+import { FastifyInstance, FastifyServerOptions } from "fastify";
+import buildApp from "./app.js";
 
 const options: FastifyServerOptions = {
-    logger: true
-}
+    logger: true,
+};
 
 const app: FastifyInstance = await buildApp(options);
 
