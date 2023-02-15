@@ -1,24 +1,19 @@
-import fastify from "fastify";
+import fastify, { FastifyServerOptions } from "fastify";
 
-const buildApp = async (opts: {}) => {
+const buildApp = async (opts: FastifyServerOptions) => {
     const app = fastify({
-        logger: true,
+        logger: opts.logger,
     });
 
     app.route({
         method: "GET",
         url: "/",
         handler: async (request, reply) => {
-            return { hello: "world" };
-        }
+            reply.send({ hello: "world" });
+        },
     });
 
-
     return app;
-}
+};
 
 export default buildApp;
-
-
-
-
