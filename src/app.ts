@@ -7,20 +7,16 @@ const buildApp = async (opts: FastifyServerOptions) => {
     });
 
     interface IBody {
-        hello: string;
+        "hello": string
     }
 
-    app.route<{ Body: IBody }>({
-        method: "GET",
-        url: "/",
-        handler: async (request, reply) => {
-            console.log(request.body);
+    app.post<{ Body: IBody }>("/", async (request, reply) => {
+        //console.log(request.server);
+        console.log(request.body);
 
-            // const { hello } = request.body;
-
-            reply.send({ hello: "wolrd" });
-        },
-    });
+        reply.send({ hello: "world" });
+    }
+    );
 
     return app;
 };
