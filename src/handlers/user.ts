@@ -5,14 +5,7 @@ const userHandlers = {
     loginHandler: async (request: FastifyRequest<{ Body: UserType, Reply: UserType }>, reply: FastifyReply) => {
         const { username, password } = request.body;
         return reply.send(request);
-
-
-
-
-
     },
-
-
 };
 
 export default userHandlers;
