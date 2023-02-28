@@ -1,22 +1,13 @@
 import fastify, { FastifyRequest, FastifyServerOptions } from "fastify";
 import { FastifyRequestType } from "fastify/types/type-provider.js";
+import { UserRoutes } from "./routes/user.js";
 
 const buildApp = async (opts: FastifyServerOptions) => {
     const app = fastify({
         logger: opts.logger,
     });
 
-    interface IBody {
-        "hello": string
-    }
-
-    app.post<{ Body: IBody }>("/", async (request, reply) => {
-        //console.log(request.server);
-        console.log(request.body);
-
-        reply.send({ hello: "world" });
-    }
-    );
+    app.register(UserRoutes, { prefix: "/user" });
 
     return app;
 };
