@@ -25,6 +25,12 @@ jobs:
       - name: Build Application
         run: npm run build
 
+      - name: Zip Files
+        uses: vimtor/action-zip@v1
+        with: 
+              files: dist/
+              dest: /build/dist.zip
+
       - name: Upload S3
         uses: shallwefootball/s3-upload-action@master
         id: S3
@@ -32,5 +38,5 @@ jobs:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: 'dist'
+          source_dir: 'build'
           destination_dir: ''
