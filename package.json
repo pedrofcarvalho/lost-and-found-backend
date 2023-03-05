@@ -6,7 +6,7 @@
   "type": "module",
   "exports": "./src/server.ts",
   "scripts": {
-    "start": "node build/server.js",
+    "start": "node dist/server.js",
     "build": "tsc -p tsconfig.json",
     "dev": "ts-node-esm src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
