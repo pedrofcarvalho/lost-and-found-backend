@@ -28,8 +28,9 @@ jobs:
       - name: Zip Files
         uses: vimtor/action-zip@v1
         with: 
-              files: dist/
+              files: dist/ package.json
               dest: /build/dist.zip
+              recursive: true
 
       - name: Upload S3
         uses: shallwefootball/s3-upload-action@master
