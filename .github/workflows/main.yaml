@@ -26,11 +26,11 @@ jobs:
         run: npm run build
 
       - name: Zip Files
-        uses: vimtor/action-zip@v1
+        uses: vimtor/action-zip@v1.1
         with: 
               files: dist/ package.json
               dest: /build/dist.zip
-              recursive: true
+              recursive: false
 
       - name: Upload S3
         uses: shallwefootball/s3-upload-action@master
