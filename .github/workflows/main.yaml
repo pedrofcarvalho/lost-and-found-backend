@@ -28,7 +28,7 @@ jobs:
       - name: Zip Files
         uses: vimtor/action-zip@v1.1
         with: 
-              files: dist/ node_modules/
+              files: dist/ node_modules/ package.json
               dest: /build/dist.zip
               recursive: false
 
