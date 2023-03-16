@@ -52,15 +52,5 @@ jobs:
           s3_bucket: ${{ secrets.AWS_BUCKET }}
           s3_key: LambdaFunctionSource/dist.zip
 
-      - name: Update Lambda Function Config
-        uses: appleboy/lambda-action@v0.1.5
-        with:
-          aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: us-east-1
-          function_name: fastifyLamdaApplication
-          handler: dist/lambda.handler
-
-
 
 
