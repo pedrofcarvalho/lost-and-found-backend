@@ -46,6 +46,13 @@ jobs:
         run: |
           aws s3 sync ./upload s3://lost-and-found-backend/LambdaFunctionSource/
 
+      - name: Update Lambda function code
+        run: |
+          aws lambda update-function-code \
+          --function-name fastifyLamdaApplication \
+          --s3-bucket lost-and-found-backend \
+          --s3-key LambdaFunctionSource/dist.zip
+
       
 # jobs:
 #   deploy:
