@@ -54,7 +54,7 @@ jobs:
           function_name: fastifyLamdaApplication
           s3_bucket: ${{ secrets.AWS_BUCKET }}
           s3_key: LambdaFunctionSource/dist.zip
-          handler: dist/lambda.handler
+          # handler: dist/lambda.handler
           debug: true
 
 
