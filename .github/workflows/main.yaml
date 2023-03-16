@@ -43,8 +43,8 @@ jobs:
               recursive: false
 
       - name: Upload to S3 bucket
-      run: |
-        aws s3 sync ./upload s3://lost-and-found-backend/LambdaFunctionSource/
+        run: |
+          aws s3 sync ./upload s3://lost-and-found-backend/LambdaFunctionSource/
 
       
 # jobs:
