@@ -3,7 +3,11 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-    
+
+permissions:
+      id-token: write
+      contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -11,6 +15,12 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::655015948510:role/github-actions-role
+          aws-region: us-east-1
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.6.0
@@ -32,25 +42,58 @@ jobs:
               dest: upload/dist.zip
               recursive: false
 
-      - name: Upload S3
-        uses: shallwefootball/s3-upload-action@master
-        id: S3
-        with:
-          aws_key_id: ${{ secrets.AWS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: upload
-          destination_dir: LambdaFunctionSource
+      - name: Upload to S3 bucket
+      run: |
+        aws s3 sync ./upload s3://lost-and-found-backend/LambdaFunctionSource/
+
       
-      - name: Update Lambda Function Code
-        uses: appleboy/lambda-action@v0.1.5
-        with:
-          aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: us-east-1
-          function_name: fastifyLamdaApplication
-          s3_bucket: ${{ secrets.AWS_BUCKET }}
-          s3_key: LambdaFunctionSource/dist.zip
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout branch
+#         uses: actions/checkout@v3
+
+#       - name: Setup Node.js environment
+#         uses: actions/setup-node@v3.6.0
+#         with:
+#           node-version: 16
+          
+#       - run: npm ci
+        
+#       - name: Install Dependencies
+#         run: npm install
+      
+#       - name: Build Application
+#         run: npm run build
+
+#       - name: Zip Files
+#         uses: vimtor/action-zip@v1.1
+#         with: 
+#               files: dist/ node_modules/ package.json
+#               dest: upload/dist.zip
+#               recursive: false
+
+#       - name: Upload S3
+#         uses: shallwefootball/s3-upload-action@master
+#         id: S3
+#         with:
+#           aws_key_id: ${{ secrets.AWS_KEY_ID }}
+#           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+#           aws_bucket: ${{ secrets.AWS_BUCKET }}
+#           source_dir: upload
+#           destination_dir: LambdaFunctionSource
+      
+#       - name: Update Lambda Function Code
+#         uses: appleboy/lambda-action@v0.1.5
+#         with:
+#           aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
+#           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           aws_region: us-east-1
+#           function_name: fastifyLamdaApplication
+#           s3_bucket: ${{ secrets.AWS_BUCKET }}
+#           s3_key: LambdaFunctionSource/dist.zip
 
 
 
