@@ -49,8 +49,9 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: us-east-1
           function_name: fastifyLambdaApplication
-          s3_bucket: ${{ secrets.AWS_BUCKET }}
-          s3_key: LambdaFunctionSource/dist.zip
+          zip_file: upload/dist.zip
+          # s3_bucket: ${{ secrets.AWS_BUCKET }}
+          # s3_key: LambdaFunctionSource/dist.zip
           handler: dist/lambda.handler
           debug: true
 
