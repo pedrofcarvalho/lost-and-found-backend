@@ -29,7 +29,7 @@ jobs:
         uses: vimtor/action-zip@v1.1
         with: 
               files: dist/ node_modules/ package.json
-              dest: dist.zip
+              dest: upload/dist.zip
               recursive: false
 
       - name: Upload S3
@@ -39,7 +39,7 @@ jobs:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: ./dist.zip
+          source_dir: upload
           destination_dir: LambdaFunctionSource
 
       - name: Update Lambda Function
