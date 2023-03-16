@@ -29,7 +29,7 @@ jobs:
         uses: vimtor/action-zip@v1.1
         with: 
               files: dist/ node_modules/ package.json
-              dest: /build/dist.zip
+              dest: dist.zip
               recursive: false
 
       - name: Upload S3
@@ -39,5 +39,19 @@ jobs:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: 'build'
-          destination_dir: ''
+          source_dir: dist.zip
+          destination_dir: LambdaFunctionSource
+
+      - name: Update Lambda Function
+        uses: appleboy/lambda-action@v0.1.5
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+          function_name: fastifyLambdaApplication
+          s3_bucket: ${{ secrets.AWS_BUCKET }}
+          s3_key: LambdaFunctionSource/dist.zip
+          handler: dist/lambda.handler
+          debug: true
+
+

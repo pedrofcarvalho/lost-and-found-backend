@@ -10,6 +10,15 @@ const buildApp = async (opts: FastifyServerOptions) => {
 
     app.register(UserRoutes, { prefix: "/user" });
 
+
+
+
+
+
+
+
+
+
     return app;
 };
 
