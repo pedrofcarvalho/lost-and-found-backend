@@ -43,7 +43,7 @@ jobs:
           destination_dir: LambdaFunctionSource
           
       - name: Wait
-      - run: sleep 5;
+        run: sleep 5;
       
       - name: Update Lambda Function
         uses: appleboy/lambda-action@v0.1.5
