@@ -1,4 +1,11 @@
-name: cd
+name: Continuous Deployment
+
+# possibly add env here to allow for easier viewing and hotswapping of vars
+#
+#
+#
+#
+#
 
 on:
   push:
@@ -6,6 +13,9 @@ on:
   pull_request:
     branches: [ main ]
 
+
+
+# Required permissions for aws-actions/configure-aws-credentials@v2
 permissions:
   id-token: write
   contents: read
@@ -73,7 +83,6 @@ jobs:
           aws lambda wait function-updated-v2 \
           --function-name fastifyLamdaApplication
 
-  
 # Old workflow
 
 # jobs:
