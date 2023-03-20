@@ -55,21 +55,21 @@ jobs:
 
       - name: Wait until code update is finished
         run: |
-        aws lambda wait function-updated-v2 \
-        --function-name fastifyLamdaApplication
+          aws lambda wait function-updated-v2 \
+          --function-name fastifyLamdaApplication
 
       - name: Update Lambda function configs
         run: |
-        aws lambda update-function-configuration \
-        --function-name fastifyLamdaApplication \
-        --timeout 3 \
-        --memory-size 128 \
-        --handler dist/lamda.handler
+          aws lambda update-function-configuration \
+          --function-name fastifyLamdaApplication \
+          --timeout 3 \
+          --memory-size 128 \
+          --handler dist/lamda.handler
 
       - name: Wait until config update is finished
         run: |
-        aws lambda wait function-updated-v2 \
-        --function-name fastifyLamdaApplication
+          aws lambda wait function-updated-v2 \
+          --function-name fastifyLamdaApplication
 
   
 # Old workflow
