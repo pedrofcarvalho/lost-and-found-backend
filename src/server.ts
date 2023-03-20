@@ -1,8 +1,10 @@
 import buildApp from "./app.js";
 
-const server = await buildApp({
+const appOptions = {
     logger: true,
-});
+};
+
+const server = await buildApp(appOptions);
 
 const startServer = async () => {
     try {
