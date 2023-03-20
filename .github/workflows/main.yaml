@@ -52,9 +52,6 @@ jobs:
           --function-name fastifyLamdaApplication \
           --s3-bucket lost-and-found-backend \
           --s3-key LambdaFunctionSource/dist.zip
-      
-      # Want to update function config here as well, but need to search for way to check when
-      # Lambda function code finishes updating
 
       - name: Wait until code update is finished
         run: |
