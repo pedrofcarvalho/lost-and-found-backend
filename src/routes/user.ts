@@ -1,6 +1,6 @@
-import { FastifyPluginAsync } from "fastify";
+import { type FastifyPluginAsync } from "fastify";
 import userHandlers from "../handlers/user.js";
-import { UserType, User } from "../schemas/user.js";
+import { type UserType, User } from "../schemas/user.js";
 
 export const UserRoutes: FastifyPluginAsync = async (fastify, opts) => {
     /*
@@ -18,15 +18,15 @@ export const UserRoutes: FastifyPluginAsync = async (fastify, opts) => {
         username: string
         password: string
     }  
-    */  
-    fastify.route<{ Body: UserType, Reply: UserType }>({
-        url: '/',
+    */
+    fastify.route<{ Body: UserType; Reply: UserType }>({
+        url: "/",
         method: "POST",
         schema: {
             tags: ["user"],
             body: User,
             response: {
-                200: User
+                200: User,
             },
         },
         handler: userHandlers.loginHandler,

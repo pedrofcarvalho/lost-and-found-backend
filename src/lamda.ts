@@ -1,5 +1,5 @@
 import awsLambdaFastify from "@fastify/aws-lambda";
-import { FastifyInstance, FastifyServerOptions } from "fastify";
+import { type FastifyInstance, type FastifyServerOptions } from "fastify";
 import buildApp from "./app.js";
 
 const options: FastifyServerOptions = {

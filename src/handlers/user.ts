@@ -1,11 +1,15 @@
-import { FastifyRequest, FastifyReply, FastifyInstance } from "fastify"
-import { UserType } from "../schemas/user.js";
+import { type FastifyRequest, type FastifyReply, type FastifyInstance } from "fastify";
+import { type UserType } from "../schemas/user.js";
 
 const userHandlers = {
-    loginHandler: async function(this: FastifyInstance, request: FastifyRequest<{ Body: UserType }>, reply: FastifyReply) {
+    loginHandler: async function (
+        this: FastifyInstance,
+        request: FastifyRequest<{ Body: UserType }>,
+        reply: FastifyReply
+    ) {
         const { username, password } = request.body;
-        request.body
-        return request.body;
+
+        return { username, password };
     },
 };
 
