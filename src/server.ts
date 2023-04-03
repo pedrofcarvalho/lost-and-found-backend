@@ -6,7 +6,8 @@ const appOptions = {
 
 const server = await buildApp(appOptions);
 
-const startServer = async () => {
+// same return type as from app.ts
+const startServer = async (): Promise<void> => {
     try {
         await server.listen({ port: 3000, host: "localhost" });
     } catch (err) {
@@ -15,4 +16,4 @@ const startServer = async () => {
     }
 };
 
-startServer();
+await startServer();
