@@ -16,8 +16,17 @@
             }
         ]
     },
-    "extends": ["eslint:recommended", "standard-with-typescript", "plugin:prettier/recommended"],
-    "overrides": [],
+    "extends": [
+        "eslint:recommended", 
+        "standard-with-typescript", 
+        "plugin:prettier/recommended"
+    ],
     "root": true,
-    "plugins": ["@typescript-eslint"]
+    "plugins": ["@typescript-eslint", "prettier"],
+    "ignorePatterns": [
+        "dist",
+        ".github",
+        "node_modules",
+        "package-lock.json"
+    ]
 }
