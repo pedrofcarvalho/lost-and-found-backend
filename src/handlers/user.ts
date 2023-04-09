@@ -1,5 +1,5 @@
 import { type FastifyRequest, type FastifyReply, type FastifyInstance } from "fastify";
-import { type UserType } from "../schemas/user.js";
+import { type UserType } from "../schemas/user.schema.js";
 
 const userHandlers = {
     loginHandler: async function (

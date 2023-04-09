@@ -1,6 +1,6 @@
 import { type FastifyPluginAsync } from "fastify";
 import userHandlers from "../handlers/user.js";
-import { type UserType, User } from "../schemas/user.js";
+import { type UserType, User } from "../schemas/user.schema.js";
 
 export const UserRoutes: FastifyPluginAsync = async (fastify, opts) => {
     /*
